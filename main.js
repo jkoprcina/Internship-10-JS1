@@ -54,9 +54,14 @@ function rotateWordLetters(userInputString){
 //User part of the program
 function chooseAlgorithm(){
     let x;
-    do {
+    while(true){
+        let exit = false;
         x = prompt( "Choose the number for which operation you want:\n" +
-                    "1 Reverse everything\n2 Anagram\n3 Capitalize\n4 Reverse words\nKRAJ Exit program");
+                    "1 \u25ba Reverse everything\n" +
+                    "2 \u25ba Anagram\n" + 
+                    "3 \u25ba Capitalize\n" +
+                    "4 \u25ba Reverse words\n" + 
+                    "KRAJ \u25ba Exit program");
         switch(x){
             case "1":
                 alert(turnTheLettersAround(prompt("Enter the text the algorithm will be done on:")));
@@ -71,14 +76,18 @@ function chooseAlgorithm(){
                 alert(rotateWordLetters(prompt("Enter the text the algorithm will be done on:")));
                 break;
             case "KRAJ":
+                exit = confirm("Are you sure???");
+                break;
+            case null:
+                exit = confirm("Are you sure???");
                 break;
             default:
                 alert("Wrong input");
         }
-        if(x === null){
+        if(x === null || exit === true){
             break;
         }
-    }while(x.toUpperCase() !== "KRAJ");
+    };
 }
 
 //Calling method to start the program for the first task
@@ -86,56 +95,72 @@ chooseAlgorithm();
 
 
 //SECOND TASK
-function containsArrays(){
-    let array = [
-        {
-            name: "Luke Skywalker",
-            height: 172,
-            mass: 77,
-            hair_color: "blond",
-            skin_color: "fair",
-            eye_color: "blue",
-            birth_year: "19BBY",
-            gender: "male"
-        },
-        {
-            name: "C-3PO",
-            height: 167,
-            mass: 75,
-            hair_color: "n/a",
-            skin_color: "gold",
-            eye_color: "yellow",
-            birth_year: "112BBY",
-            gender: "n/a"
-        },
-        {
-            name: "R2-D2",
-            height: 96,
-            mass: 32,
-            hair_color: "n/a",
-            skin_color: "white, blue",
-            eye_color: "red",
-            birth_year: "33BBY",
-            gender: "n/a"
-        },
-        {
-            name: "Darth Vader",
-            height: 202,
-            mass: 136,
-            hair_color: "none",
-            skin_color: "white",
-            eye_color: "yellow",
-            birth_year: "41.9BBY",
-            gender: "male"
-        },
-        {
-            name: "Leia Organa",
-            height: 150,
-            mass: 49,
-            hair_color: "brown",
-            skin_color: "light",
-            eye_color: "brown",
-            birth_year: "19BBY",
-            gender: "female"
-        }];
+let starWarsCharactersArray = [
+    {
+        name: "Luke Skywalker",
+        height: 172,
+        mass: 77,
+        hair_color: "blond",
+        skin_color: "fair",
+        eye_color: "blue",
+        birth_year: "19BBY",
+        gender: "male"
+    },
+    {
+        name: "C-3PO",
+        height: 167,
+        mass: 75,
+        hair_color: "n/a",
+        skin_color: "gold",
+        eye_color: "yellow",
+        birth_year: "112BBY",
+        gender: "n/a"
+    },
+    {
+        name: "R2-D2",
+        height: 96,
+        mass: 32,
+        hair_color: "n/a",
+        skin_color: "white, blue",
+        eye_color: "red",
+        birth_year: "33BBY",
+        gender: "n/a"
+    },
+    {
+        name: "Darth Vader",
+        height: 202,
+        mass: 136,
+        hair_color: "none",
+        skin_color: "white",
+        eye_color: "yellow",
+        birth_year: "41.9BBY",
+        gender: "male"
+    },
+    {
+        name: "Leia Organa",
+        height: 150,
+        mass: 49,
+        hair_color: "brown",
+        skin_color: "light",
+        eye_color: "brown",
+        birth_year: "19BBY",
+        gender: "female"
+    }
+];
+
+//The whole second task is in one function as isabela ordered
+function secondTask(charactersArray){
+    //Sorting an array by the property 'height'
+    charactersArray = charactersArray.sort((a, b) => (a.height > b.height) ? 1 : -1);
+    console.log(charactersArray);
+    //Finding average weight (mass)
+    let weightOfAllCharacters = 0;
+    for(let i = 0; i < charactersArray.length; i++){
+        weightOfAllCharacters += charactersArray[i].mass;
+    }
+    console.log("Average weight is " + (weightOfAllCharacters / charactersArray.length));
 }
+
+//Calling the function for the second task
+secondTask(starWarsCharactersArray);
+
