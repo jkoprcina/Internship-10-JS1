@@ -152,7 +152,9 @@ let starWarsCharactersArray = [
 function secondTask(charactersArray){
     //Sorting an array by the property 'height'
     charactersArray = charactersArray.sort((a, b) => (a.height > b.height) ? 1 : -1);
-    console.log(charactersArray);
+    for(let i = 0; i < charactersArray.length; i++){
+        console.log(charactersArray[i].name, charactersArray[i].height);
+    }
     //Finding average weight (mass)
     let weightOfAllCharacters = 0;
     for(let i = 0; i < charactersArray.length; i++){
